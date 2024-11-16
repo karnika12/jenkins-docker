@@ -22,7 +22,7 @@ pipeline {
         
         stage('Login to AWS ECR') {
             steps {
-                withCredentials([aws(credentialsId: 'AWS-Credentials', accessKeyVariable: 'AWS_ACCESS_KEY_ID', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
+                withCredentials([aws(credentialsId: 'AWS Credentials', accessKeyVariable: 'AWS_ACCESS_KEY_ID', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
                     script {
                         // Authenticate Docker to AWS ECR using AWS CLI
                         sh '''
