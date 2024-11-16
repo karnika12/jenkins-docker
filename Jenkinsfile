@@ -26,7 +26,8 @@ pipeline {
                     script {
                         // Authenticate Docker to AWS ECR using AWS CLI
                         sh '''
-                            aws ecr get-login-password --region ${AWS_REGION} | docker login --username AWS --password-stdin ${ECR_URI}
+                           echo "Attempting to login to AWS ECR..."
+                           aws ecr get-login-password --region ${AWS_REGION} | docker login --username AWS --password-stdin ${ECR_URI}
                         '''
                     }
                 }
