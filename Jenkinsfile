@@ -12,10 +12,10 @@ pipeline {
             steps {
                 script {
                     // Build the Docker image
-                    sh 'docker build -t ${IMG_NAME} .'
+                    sh 'sudo docker build -t ${IMG_NAME} .'
                     
                     // Tag the image for ECR push
-                    sh 'docker tag ${IMG_NAME} ${ECR_URI}:latest'
+                    sh 'sudo docker tag ${IMG_NAME} ${ECR_URI}:latest'
                 }
             }
         }
@@ -26,7 +26,7 @@ pipeline {
                     script {
                         // Authenticate Docker to AWS ECR using AWS CLI
                         sh '''
-                            aws ecr get-login-password --region ${AWS_REGION} | docker login --username AWS --password-stdin ${ECR_URI}
+                            aws ecr get-login-password --region ${AWS_REGION} | sudo docker login --username AWS --password-stdin ${ECR_URI}
                         '''
                     }
                 }
